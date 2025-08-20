@@ -1,12 +1,14 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
-import Home from "./Components/Home";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
+import Home from "./pages/main/index";
+import GlobalStyles from './styles/GlobalStyles';
 
 function App() {
 
   return (
     <>
+    <GlobalStyles />
       <BrowserRouter>
         <Header></Header>
         <Routes>
