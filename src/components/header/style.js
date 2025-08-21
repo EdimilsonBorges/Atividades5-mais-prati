@@ -27,7 +27,7 @@ export const Link = styled(NavLink)`
 
      &:hover {
         background-color: rgba(255, 255, 255, 0.08);
-        color: #4da6ff; /* Azul suave no hover */
+        color: #4da6ff;
         box-shadow: 0 0 8px rgba(77, 166, 255, 0.4);
   }
 `;

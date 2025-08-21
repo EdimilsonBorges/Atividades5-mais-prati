@@ -1,29 +1,54 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getPopularMovies } from '../../services/apiService';
-import { Container } from "./style"
+import Cards from '../../components/movies/Cards'
+import { Container, Loader, Spinner } from "./style"
 
 const Home = () => {
+    const [loading, setLoading] = useState(false);
+    const [page, setPage] = useState(1);
     const [movies, setMovies] = useState([]);
+    const loaderRef = useRef(null);
+
+
+    const loadMovies = async (pageNumber) => {
+        setLoading(true);
+        const response = await getPopularMovies(pageNumber);
+        setMovies((prev) => [...prev, ...response.results]);
+        setLoading(false);
+    };
 
     useEffect(() => {
-        async function loadPupularMovies() {
-            const response = await getPopularMovies(500);
-            setMovies(response.results);
-            console.log(response);
-        }
-        loadPupularMovies();
-    }, []);
+        loadMovies(page);
+    }, [page]);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const first = entries[0];
+                if (first.isIntersecting && !loading) {
+                    setPage((prev) => prev + 1);
+                }
+            },
+            {
+                threshold: 0,          
+                rootMargin: "200px",
+            }
+        );
+
+        const currentLoader = loaderRef.current;
+        if (currentLoader) observer.observe(currentLoader);
+
+        return () => {
+            if (currentLoader) observer.unobserve(currentLoader);
+        };
+    }, [loading]);
 
     return (
         <Container>
-            {movies.map((movie) => (
-                <div key={movie.id}>
-                    {movie.poster_path ? <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} title={movie.title} alt={movie.title} /> : <p>Imagem Indisponível</p>}
-                    <h2>{movie.title}</h2>
-                    <h3>{movie.release_date ? new Date(movie.release_date).getFullYear() : 'Ano desconhecido'}</h3>
-                    <p>{movie.overview}</p>
-                </div>
-            ))}
+            <Cards movies={movies}>
+            </Cards>
+            {loading && <Loader><Spinner></Spinner><span>Carregando aguarde...</span></Loader>}
+            <div ref={loaderRef} style={{ height: "50px", marginTop: "10rem" }} />
         </Container>
     )
 }
