@@ -9,11 +9,27 @@ const api = axios.create({
 
 export const getPopularMovies = async (page = 1) => {
     try {
-        const response = await api.get('/movie/popular', {
+        const response = await api.get('/discover/movie', {
             params: {
                 api_key: API_KEY,
                 page,
                 language: 'pt-BR',
+                sort_by:'popularity.desc',
+            },
+        });
+        return response.data;
+    } catch (error) {
+        throw new error;
+    }
+};
+
+export const getMovieDetails = async (movieId) => {
+    try {
+        const response = await api.get(`/movie/${movieId}`, {
+            params: {
+                api_key: API_KEY,
+                language: 'pt-BR',
+                append_to_response: 'credits',
             },
         });
         return response.data;

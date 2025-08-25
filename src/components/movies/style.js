@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const Container = styled.section`
-    padding: 0 3rem;
+    padding: 2rem 3rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.7rem;
 `;
 
 export const Card = styled.div`
@@ -30,6 +31,7 @@ export const Title = styled.h2`
 
 export const ImageMovie = styled.img`
     height:400px;
+    margin-top: -1.6rem;
     border-radius: 5px 5px 0 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-left: 1px solid rgba(255, 255, 255, 0.1);
@@ -49,12 +51,14 @@ export const Info = styled.div`
     border-radius: 0 0 5px 5px;
 `;
 
-export const Button = styled.button` 
+export const Link = styled(NavLink)` 
     width:100%;    
     padding: 0.8rem 1rem;
     background-color: rgba(77, 166, 255, 0.4);
     border:none;
     border-radius: 5px;
+    text-decoration: none;
+    text-align:center;
     color:#fff;
     &:hover{
     background-color: rgba(77, 166, 255, 0.6);
@@ -68,8 +72,8 @@ export const ReleaseDate = styled.h3`
 
 export const ScoreMovie = styled.span`
     position:relative;
-    top:2.3rem;
     left:0.5rem;
+    top:1rem;
     width:fit-content;
     display: flex;
     align-items:center;
