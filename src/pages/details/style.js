@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const HeaderContainer = styled.section`
     display:flex;
     padding: 2rem 3rem;
     gap: 2rem;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(18, 18, 18, 0.8)), url(${(props) => props.$url}) center center / cover no-repeat;
+    width:100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(18, 18, 18, 0.8)), url(${(props) => props.$url}) center center / cover no-repeat;
 `;
 
 export const ImageMovie = styled.img`
@@ -26,6 +28,7 @@ export const Title = styled.h1`
 export const Info = styled.div`
     display:flex;
     flex-direction:column;
+    gap:0.3rem;
 `;
 
 export const Container = styled.section`
@@ -40,4 +43,52 @@ export const ContainerDetails = styled.section`
     max-width:60rem;
     justify-content:center;
     padding: 2rem 3rem;
+`;
+
+export const TagLine = styled.p`
+    font-size:1.3rem;
+`;
+
+export const HeaderInfo = styled.section`
+    width:100%;    
+    display:flex;
+    flex-direction:column;
+    gap:2.5rem;
+`;
+
+export const ButtonBack = styled(NavLink)`
+    width:5rem;    
+    padding: 0.8rem 1rem;
+    border:none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align:center;
+    color:#fff;
+    background-color: rgb(53, 105, 160);
+    
+    &:hover{
+        background-color: rgb(25, 50, 77);
+    }
+`;
+
+export const FavoriteIcon = styled.img`
+    width:2.5rem;
+    height:2.5rem;
+    background-color: rgba(25, 50, 77,0.6);
+    border-radius:50%;
+    padding:0.3rem;
+    cursor:pointer;
+    box-shadow: 0px 0px 2px rgb(255, 255, 255);
+
+    &:hover{
+        background-color: rgba(25, 50, 77,0.8);
+        box-shadow: 0px 0px 5px rgb(255, 255, 255);
+    }
+`;
+
+export const HeaderTitle = styled.div`
+    display:flex;
+    gap:1rem;
+    justify-content:start;
+    align-items:center;
 `;
