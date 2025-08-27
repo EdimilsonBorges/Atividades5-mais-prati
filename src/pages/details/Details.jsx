@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieDetails } from '../../services/apiService';
-import { HeaderContainer, Container, ImageMovie, Title, Info, ContainerDetails, TagLine, HeaderInfo, ButtonBack, FavoriteIcon, HeaderTitle } from './style';
+import { HeaderContainer, Container, ImageMovie, Title, Info, ContainerDetails, TagLine, HeaderInfo, ButtonBack, FavoriteIcon, HeaderTitle, SinopseTitle, SinopseText } from './style';
 import GenresCard from '../../components/genres/GenresCard';
+import Credits from '../../components/credits/Credts';
 import Load from '../../components/load/Load';
 import Favorite from '../../assets/icons/favorite.svg';
 import NotFavorite from '../../assets/icons/notfavorite.svg';
@@ -84,26 +85,10 @@ const Details = () => {
             </HeaderContainer>
             <Container>
                 <ContainerDetails>
-                    <h2>Sinopse</h2>
-                    <p>{movie.overview ? movie.overview : "N/A"}</p>
-                    <h2>Elenco</h2>
-                    <div style={{ 'display': 'flex' }}>
-                        {creditsCast.filter((crew) => crew.profile_path != null).slice(0, 6).map((cast, index) => (
-                            <div key={index}>
-                                <img width='100px' src={`https://image.tmdb.org/t/p/w200/${cast.profile_path}`} alt="" />
-                                <h3>{cast.name}</h3>
-                                <h4>{cast.character}</h4>
-                            </div>))}
-                    </div>
-                    <h2>Equipe</h2>
-                    <div style={{ 'display': 'flex' }}>
-                        {creditsCrew.filter((crew) => crew.profile_path != null).slice(0, 6).map((crew, index) => (
-                            <div key={index}>
-                                <img width='100px' src={`https://image.tmdb.org/t/p/w200/${crew.profile_path}`} alt="" />
-                                <h3>{crew.name}</h3>
-                                <h4>{crew.department}</h4>
-                            </div>))}
-                    </div>
+                    <SinopseTitle>Sinopse</SinopseTitle>
+                    <SinopseText>{movie.overview ? movie.overview : "N/A"}</SinopseText>
+                    <Credits credits={creditsCast} title={"Elenco"}></Credits>
+                    <Credits credits={creditsCrew} title={"Equipe"}></Credits>
                 </ContainerDetails>
             </Container>
         </>

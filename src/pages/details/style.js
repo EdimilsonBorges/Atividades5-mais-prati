@@ -40,8 +40,9 @@ export const Container = styled.section`
 export const ContainerDetails = styled.section`
     display:flex;
     flex-direction:column;
-    max-width:60rem;
+    width:60rem;
     justify-content:center;
+    gap:1rem;
     padding: 2rem 3rem;
 `;
 
@@ -91,4 +92,13 @@ export const HeaderTitle = styled.div`
     gap:1rem;
     justify-content:start;
     align-items:center;
+`;
+
+export const SinopseTitle = styled.h2`
+    color:#e84f4f;
+`;
+
+export const SinopseText = styled.p`
+    color: #cccccc;
+    font-size:1.2rem;    
 `;

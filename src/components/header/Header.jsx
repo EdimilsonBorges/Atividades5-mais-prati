@@ -3,7 +3,7 @@ import { Container, Ul, Link, Logo } from "./style";
 const Header = () => {
     return (
             <Container>
-                <Logo to={"/"}>Ver Filmes</Logo>
+                <Logo to={"/"}>Filmes</Logo>
                 <nav>
                     <Ul>
                         <li><Link to={"/"}>Inicio</Link></li>
