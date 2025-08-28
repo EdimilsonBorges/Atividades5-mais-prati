@@ -16,4 +16,5 @@ export const Genre = styled.span`
     &:hover{
         background-color: #762626;
     }
+
 `;

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { getPopularMovies, searchMovies } from '../../services/apiService';
 import Cards from '../../components/movies/Cards';
-import { Container, TitleCards, EndPage, ResultsText, SectionSearch, ButtonSearch, FormSearch, Search } from "./style";
+import { Container, TitleCards, MsgError, ResultsText, SectionSearch, ButtonSearch, FormSearch, Search } from "./style";
 import Load from '../../components/load/Load';
 
 const Home = () => {
@@ -102,9 +102,8 @@ const Home = () => {
                 </FormSearch>
             </SectionSearch>
             {!isSearching ? <TitleCards>Filmes Populares</TitleCards> : <ResultsText>Foram encontrado {totalResults} filmes nesta busca.</ResultsText>}
-            <Cards movies={movies}>
-            </Cards>
-            {!error && loading && <Load></Load>}
+            {error ? <MsgError>Ops... Ocorreu um erro ao carregar os dados.</MsgError> : <Cards movies={movies}/>}
+            {!error && loading && <Load/>}
             {/* {page === totalPages && !loading && <EndPage>Fim</EndPage>} */}
             <div ref={loaderRef} style={{ height: "50px", marginTop: "10rem" }} />
         </Container>

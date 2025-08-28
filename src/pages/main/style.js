@@ -8,7 +8,7 @@ export const Container = styled.main`
     align-items: center;
 `;
 
-export const TitleCards = styled.h1`
+export const TitleCards = styled.h2`
     padding:1rem;
     color: rgb(77, 166, 255);
     font-size: 1.5rem;
@@ -85,4 +85,9 @@ export const ButtonSearch = styled.button`
         background: linear-gradient(135deg, rgba(77, 166, 255,0.7), rgba(77, 166, 255,0.5));
         box-shadow: 0 4px 12px rgba(77, 166, 255,0.2);
 }
+`;
+
+export const MsgError = styled.p`
+    color: #cccccc;
+    font-size:1.2rem;
 `;

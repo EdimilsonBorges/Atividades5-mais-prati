@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieDetails } from '../../services/apiService';
-import { HeaderContainer, Container, ImageMovie, Title, Info, ContainerDetails, TagLine, HeaderInfo, ButtonBack, FavoriteIcon, HeaderTitle, SinopseTitle, SinopseText } from './style';
+import { HeaderContainer, Container, ImageMovie, Title, Info, ContainerDetails, TagLine, HeaderInfo, ButtonBack, FavoriteIcon, HeaderTitle, SinopseTitle, SinopseText, ContainerError, MsgError } from './style';
 import GenresCard from '../../components/genres/GenresCard';
 import Credits from '../../components/credits/Credts';
 import Load from '../../components/load/Load';
@@ -12,12 +12,13 @@ import ImageNotFound from '../../assets/images/ImageNotFound.svg';
 const Details = () => {
 
     const [loading, setLoading] = useState(false);
-    const [favorite, setFavorite] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(false);
     const [movie, setMovie] = useState([]);
     const [genres, setGenres] = useState([]);
     const [creditsCast, setCreditsCast] = useState([]);
     const [creditsCrew, setCreditsCrew] = useState([]);
     const { id } = useParams();
+    const [error, setError] = useState(false);
 
     const loadMoviesDetails = async () => {
         try {
@@ -28,11 +29,17 @@ const Details = () => {
             setCreditsCast(response.credits.cast);
             setCreditsCrew(response.credits.crew);
             setLoading(false);
-            console.log(response);
+            setError(false);
         } catch (erro) {
-            console.log("erro erro erro");
+            setError(true);
         }
     };
+
+    useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        const isFavorite = favorites.some((fav) => fav.id === movie.id);
+        setIsFavorite(isFavorite);
+  }, [movie]);
 
     useEffect(() => {
         loadMoviesDetails();
@@ -52,25 +59,38 @@ const Details = () => {
         return '0m';
     }
 
-    function handleFavorite() {
-        if (favorite) {
-            setFavorite(false);
-        } else {
-            setFavorite(true);
+    function addToFavorites(movie){
+        const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        if (!favorites.some((fav) => fav.id === movie.id)) {
+        favorites.push(movie);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
         }
     }
 
+    function removeToFavorites(movie){
+        const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        const updated = favorites.filter((fav) => fav.id !== movie.id);
+        localStorage.setItem("favorites", JSON.stringify(updated));
+    }
 
+    function handleFavorite() {
+        if (isFavorite) {
+            setIsFavorite(false);
+            removeToFavorites(movie);
+        } else {
+            setIsFavorite(true);
+            addToFavorites(movie);
+        }
+    }
 
-    return (
-        loading ? <Load></Load> : <>
+    return ( error ? <ContainerError> <MsgError>Ops... Ocorreu um erro ao carregar os dados.</MsgError> </ContainerError> : loading ? <Load></Load> : <>
             <HeaderContainer $url={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}>
                 {movie.poster_path ? <ImageMovie src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} title={movie.title} alt={movie.title} loading="lazy" /> : <ImageMovie src={ImageNotFound} title={movie.title} alt={movie.title} loading="lazy" /> }
                 <HeaderInfo>
                     <div>
                         <HeaderTitle>
                             <Title>{movie.title}</Title>
-                            {favorite ? <FavoriteIcon src={Favorite} onClick={handleFavorite} /> : <FavoriteIcon src={NotFavorite} onClick={handleFavorite} />}
+                            {isFavorite ? <FavoriteIcon src={Favorite} title="Remover dos favoritos" onClick={handleFavorite} /> : <FavoriteIcon src={NotFavorite} title="Adicionar aos favoritos" onClick={handleFavorite} />}
                         </HeaderTitle>
                         <TagLine>{movie.tagline}</TagLine>
                     </div>

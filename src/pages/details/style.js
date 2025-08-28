@@ -1,6 +1,20 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+export const ContainerError = styled.section`
+    display: flex;
+    flex-direction:column;
+    gap: 0.7rem;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 3rem;
+`;
+
+export const MsgError = styled.p`
+    color: #cccccc;
+    font-size:1.2rem;
+`;
+
 export const HeaderContainer = styled.section`
     display:flex;
     padding: 2rem 3rem;
@@ -9,9 +23,9 @@ export const HeaderContainer = styled.section`
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(18, 18, 18, 0.8)), url(${(props) => props.$url}) center center / cover no-repeat;
     
     @media (max-width: 768px) {
-    flex-direction: column;
-    justify-content:center;
-    align-items:center;
+        flex-direction: column;
+        justify-content:center;
+        align-items:center;
   }
 `;
 
@@ -61,6 +75,10 @@ export const HeaderInfo = styled.section`
     display:flex;
     flex-direction:column;
     gap:2.5rem;
+
+    @media (max-width: 768px) {
+        gap:1rem;
+  }
 `;
 
 export const ButtonBack = styled(NavLink)`
