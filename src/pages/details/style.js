@@ -7,6 +7,12 @@ export const HeaderContainer = styled.section`
     gap: 2rem;
     width:100%;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(18, 18, 18, 0.8)), url(${(props) => props.$url}) center center / cover no-repeat;
+    
+    @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+  }
 `;
 
 export const ImageMovie = styled.img`

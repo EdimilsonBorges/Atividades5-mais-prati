@@ -38,4 +38,20 @@ export const getMovieDetails = async (movieId) => {
     }
 };
 
+export const searchMovies = async (query, page = 1) => {
+    try {
+        const response = await api.get('/search/movie', {
+            params: {
+                api_key: API_KEY,
+                query,
+                page,
+                language: 'pt-BR',
+            },
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
 export default api;

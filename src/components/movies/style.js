@@ -2,16 +2,19 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Container = styled.section`
-    padding: 2rem 3rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    display: flex;
+    flex-wrap:wrap;
     gap: 0.7rem;
+    justify-content: center;
+    align-items: center;
+    padding: 0 3rem;
 `;
 
-export const Card = styled.div`
+export const Card = styled.div`  
+    width:250px;  
     display: flex;
     flex-direction:column;
-    justify-content: start;
+    justify-content: center;
     align-items: stretch;
     transition: 0.3s;
 

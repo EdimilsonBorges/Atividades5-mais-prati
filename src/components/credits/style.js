@@ -2,15 +2,15 @@ import styled from 'styled-components';
 
 export const TitleCredit = styled.h2`
     font-size:1.5rem;
-    color:#e84f4f;
+    color: #e84f4f;
 `;
 
 export const Credit = styled.div`
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    display:flex;
+    flex-wrap:wrap;
     gap:0.5rem;
     align-items:center;
-    justify-content:center;
+    justify-content:start;
 `;
 
 export const ImageCredit = styled.img`
@@ -18,7 +18,10 @@ export const ImageCredit = styled.img`
     border-radius: 1rem;
 `;
 
-export const NameCredit = styled.h3`
+export const NameCredit = styled.h3`       
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size:1.1rem;
 
 `;

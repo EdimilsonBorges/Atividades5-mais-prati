@@ -7,6 +7,7 @@ import Credits from '../../components/credits/Credts';
 import Load from '../../components/load/Load';
 import Favorite from '../../assets/icons/favorite.svg';
 import NotFavorite from '../../assets/icons/notfavorite.svg';
+import ImageNotFound from '../../assets/images/ImageNotFound.svg';
 
 const Details = () => {
 
@@ -64,7 +65,7 @@ const Details = () => {
     return (
         loading ? <Load></Load> : <>
             <HeaderContainer $url={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}>
-                <ImageMovie src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} title={movie.title} alt={movie.title} loading="lazy" />
+                {movie.poster_path ? <ImageMovie src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} title={movie.title} alt={movie.title} loading="lazy" /> : <ImageMovie src={ImageNotFound} title={movie.title} alt={movie.title} loading="lazy" /> }
                 <HeaderInfo>
                     <div>
                         <HeaderTitle>
@@ -86,7 +87,7 @@ const Details = () => {
             <Container>
                 <ContainerDetails>
                     <SinopseTitle>Sinopse</SinopseTitle>
-                    <SinopseText>{movie.overview ? movie.overview : "N/A"}</SinopseText>
+                    <SinopseText>{movie.overview ? movie.overview : "Sinopse não disponível."}</SinopseText>
                     <Credits credits={creditsCast} title={"Elenco"}></Credits>
                     <Credits credits={creditsCrew} title={"Equipe"}></Credits>
                 </ContainerDetails>
