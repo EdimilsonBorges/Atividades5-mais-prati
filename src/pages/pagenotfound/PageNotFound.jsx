@@ -1,5 +1,5 @@
 
-import PageNotFoundImage from '../../assets/images/PageNotFound.svg';
+import PageNotFoundImage from '../../assets/images/pageNotFound.svg';
 import {Container,ImgNotFound} from './style';
 const PageNotFound = () => {
     return (
