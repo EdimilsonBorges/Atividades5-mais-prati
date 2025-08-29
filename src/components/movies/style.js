@@ -37,7 +37,6 @@ export const Title = styled.h2`
 `;
 
 export const ImageMovie = styled.img`
-    height:22rem;
     margin-top: -1.6rem;
     border-radius: 5px 5px 0 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
