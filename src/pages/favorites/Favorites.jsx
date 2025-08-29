@@ -17,7 +17,7 @@ const Favorites = () => {
             {moviesFavorites.length === 0 ? (
                 <MsgEmpty>Você ainda não tem filmes favoritos.</MsgEmpty>
             ) : (
-                <Cards movies={moviesFavorites}/>
+                <Cards $length={moviesFavorites.length} movies={moviesFavorites}/>
             )}
         </Container>
     );

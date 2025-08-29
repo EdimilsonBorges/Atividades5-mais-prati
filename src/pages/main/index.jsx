@@ -41,7 +41,6 @@ const Home = () => {
 
             if (pageNumber === 1) {
                 setMovies(data.results);
-                console.log(data);
                 setIsSearching(true);
                 setPage(1);
             } else {

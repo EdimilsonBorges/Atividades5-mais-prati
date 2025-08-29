@@ -11,9 +11,8 @@ export const Container = styled.section`
 `;
 
 export const Card = styled.div`
-    width:14rem;
+    width:16rem;
     display: flex;
-    flex: 1 10px;
     flex-direction:column;
     justify-content: center;
     transition: 0.3s;
@@ -25,6 +24,7 @@ export const Card = styled.div`
 
     @media (max-width: 768px) {
         width:10rem;
+        flex: 1 1px;
      }
 `;
 
@@ -37,6 +37,7 @@ export const Title = styled.h2`
 `;
 
 export const ImageMovie = styled.img`
+    height:22rem;
     margin-top: -1.6rem;
     border-radius: 5px 5px 0 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);

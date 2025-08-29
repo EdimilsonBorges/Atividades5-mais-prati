@@ -4,6 +4,7 @@ import Home from "./pages/main/index";
 import GlobalStyles from './styles/GlobalStyles';
 import Favorites from './pages/favorites/Favorites';
 import Details from './pages/details/Details';
+import PageNotFound from './pages/pagenotfound/PageNotFound';
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/details/:id" element={<Details />} />
-          Details
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </>

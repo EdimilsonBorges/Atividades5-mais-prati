@@ -42,9 +42,10 @@ export const ImageMovie = styled.img`
 `;
 
 export const Title = styled.h1`
-    font-size:2.5rem;
+    font-size:2rem;       
+
      @media (max-width: 768px) {
-         font-size:2rem;
+         font-size:1.7rem;
      }
 `;
 
