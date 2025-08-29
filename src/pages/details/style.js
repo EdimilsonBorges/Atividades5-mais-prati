@@ -43,12 +43,21 @@ export const ImageMovie = styled.img`
 
 export const Title = styled.h1`
     font-size:2.5rem;
+     @media (max-width: 768px) {
+         font-size:2rem;
+     }
 `;
 
 export const Info = styled.div`
     display:flex;
     flex-direction:column;
     gap:0.3rem;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        justify-content:center;
+        align-items:center;
+     }
 `;
 
 export const Container = styled.section`
@@ -79,7 +88,9 @@ export const HeaderInfo = styled.section`
     gap:2.5rem;
 
     @media (max-width: 768px) {
-        gap:1rem;
+        gap:1rem;  
+        justify-content:start;
+        align-items:center;
   }
 `;
 
@@ -121,7 +132,7 @@ export const HeaderTitle = styled.div`
 `;
 
 export const SinopseTitle = styled.h2`
-    color:#e84f4f;
+    color: #e84f4f;
 `;
 
 export const SinopseText = styled.p`

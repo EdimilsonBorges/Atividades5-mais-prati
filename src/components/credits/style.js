@@ -22,6 +22,8 @@ export const Credit = styled.div`
 export const CardCredit = styled.div`
     display:flex;
     flex-direction:column;
+    justify-content:center;
+    align-items:center;
 `;
 
 export const ImageCredit = styled.img`
@@ -38,6 +40,10 @@ export const NameCredit = styled.h3`
 `;
 
 export const FunctionCredit = styled.h4`
+    width:7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size:0.9rem;
     color: #999999;
     text-align:center;
