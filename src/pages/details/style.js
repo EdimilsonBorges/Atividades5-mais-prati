@@ -26,7 +26,7 @@ export const HeaderContainer = styled.section`
         flex-direction: column;
         justify-content:center;
         align-items:center;
-  }
+     }
 `;
 
 export const ImageMovie = styled.img`
@@ -53,17 +53,19 @@ export const Info = styled.div`
 
 export const Container = styled.section`
     display:flex;
-    padding: 2rem 3rem;
     justify-content:center;
 `;
 
 export const ContainerDetails = styled.section`
+    width:70%;
     display:flex;
     flex-direction:column;
-    width:60rem;
-    justify-content:center;
     gap:1rem;
     padding: 2rem 3rem;
+
+    @media (max-width: 768px) {
+        width:100%;
+     }
 `;
 
 export const TagLine = styled.p`

@@ -7,21 +7,25 @@ export const Container = styled.section`
     gap: 0.7rem;
     justify-content: center;
     align-items: center;
-    padding: 0 3rem;
+    padding: 0 1.5rem; 
 `;
 
-export const Card = styled.div`  
-    width:250px;  
+export const Card = styled.div`
+    width:14rem;
     display: flex;
+    flex: 1 10px;
     flex-direction:column;
     justify-content: center;
-    align-items: stretch;
     transition: 0.3s;
 
     &:hover{
       transform: translateY(-0.4rem);
       filter: saturate(2);
     }
+
+    @media (max-width: 768px) {
+        width:10rem;
+     }
 `;
 
 export const Title = styled.h2`
@@ -33,7 +37,6 @@ export const Title = styled.h2`
 `;
 
 export const ImageMovie = styled.img`
-    height:400px;
     margin-top: -1.6rem;
     border-radius: 5px 5px 0 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);

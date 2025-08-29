@@ -3,9 +3,11 @@ import styled from 'styled-components';
 export const Container = styled.main`
     display: flex;
     flex-direction:column;
+    flex-wrap:wrap;
     gap: 0.7rem;
     justify-content: center;
     align-items: center;
+    padding: 0 1.5rem; 
     padding:0rem 0rem 4rem 0rem;
 `;
 
