@@ -2,31 +2,59 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Container = styled.section`
-    display: flex;
-    flex-wrap:wrap;
-    gap: 0.7rem;
-    justify-content: center;
-    align-items: center;
-    padding: 0 1.5rem; 
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 0.7rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1.5rem;
+
+  @media (max-width: 1060px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (max-width: 750px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 380px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const Card = styled.div`
-    width:16rem;
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    transition: 0.3s;
+  width: 16rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 0.3s;
 
-    &:hover{
-      transform: translateY(-0.4rem);
-      filter: saturate(2);
+  &:hover {
+    transform: translateY(-0.4rem);
+    filter: saturate(2);
+  }
+    @media (max-width: 1400px) {
+        width: 12rem;
+    }
+    @media (max-width: 855px) {
+        width: 10rem;
+    }
+    @media (max-width: 750px) {
+        width: 15rem;
+    }
+    @media (max-width: 540px) {
+        width: 12rem;
+    }
+    @media (max-width: 450px) {
+        width: 10rem;
     }
 
-    @media (max-width: 768px) {
-        width:10rem;
-        flex: 1 1px;
-     }
+    @media (max-width: 380px) {
+        width: 16rem;
+    }
+
 `;
+
 
 export const Title = styled.h2`
     max-width: 400px;        
